@@ -1,0 +1,28 @@
+.nav {
+    grid-area: n;
+    background-color: violet;
+}
+
+.item a {
+    color: white;
+    text-decoration: none;
+}
+
+.nameFriend img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+}
+
+.friends {
+    margin: auto;
+}
+
+.infoFriends {
+    display: flex;
+    margin: 5px 5px 5px 20px;
+}
+
+.nameSelection {
+    text-align: center;
+}
