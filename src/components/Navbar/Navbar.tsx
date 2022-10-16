@@ -7,7 +7,7 @@ const Navbar = () => {
 
     const friends = [
       {id: 1, name: 'Dima'},
-      {id: 2, name: 'Diana'},
+      {id: 2, name: 'Pavel'},
       {id: 3, name: 'Vlad'},
     ]
 

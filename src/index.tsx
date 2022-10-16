@@ -4,25 +4,22 @@ import ReactDOM from "react-dom/client";
 import React from "react";
 import "./index.css";
 import App from "./App";
-import {Provider} from "./storeContext";
+import {Provider} from "react-redux";
+import {HashRouter} from "react-router-dom";
 
-const rerenderEntireTree = () => {
-    const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
+const root = ReactDOM.createRoot(
+    document.getElementById("root") as HTMLElement
+);
+
     root.render(
         <React.StrictMode>
-            <Provider store={store}>
-                <App />
-            </Provider>
+            <HashRouter>
+                <Provider store={store}>
+                    <App/>
+                </Provider>
+            </HashRouter>
         </React.StrictMode>
     );
-};
-
-rerenderEntireTree();
-
-store.subscribe (() => {
-    let state = store.getState();
-    rerenderEntireTree();
-});
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

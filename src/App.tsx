@@ -8,7 +8,6 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 const App = () => {
         return (
-            <BrowserRouter>
                 <div className="app-wrapper">
                     <Header/>
                     <Navbar/>
@@ -21,7 +20,6 @@ const App = () => {
                         </Routes>
                     </div>
                 </div>
-            </BrowserRouter>
         )
     }
 ;
