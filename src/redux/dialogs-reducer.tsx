@@ -1,22 +1,30 @@
-import {ActionsTypes} from "./profile-reducer";
-
-
 const UPDATE_NEW_MESSAGE_BODY = 'NEW-MESSAGE-BODY';
 const SEND_MESSAGE = 'SEND-MESSAGE';
 
 export const updateNewMessageBodyCreator = (body: string) => ({type: UPDATE_NEW_MESSAGE_BODY, body: body}) as const
 export const sendMessageCreator = () => ({type: SEND_MESSAGE}) as const
 
-export type DialogType = {
-    id: number
-    name: string
-}
+export type ActionsTypes =
+    ReturnType<typeof updateNewMessageBodyCreator>
+    | ReturnType<typeof sendMessageCreator>
 
 export type MessageType = {
-    id: number
+    id: number,
     name: string
     message: string
 }
+
+export type DialogType = {
+    id: number,
+    name: string
+}
+
+// export type DialogPageType = {
+//     messages: Array<MessageType>
+//     dialogs: Array<DialogType>
+//     friends: Array<DialogType>
+//     newMessageBody: string
+// }
 
 export type InitialStateType = {
     messages: Array<MessageType>
@@ -27,25 +35,25 @@ export type InitialStateType = {
 
 const initialState = {
     messages: [
-        {id: 1, name: 'Sergey', message: 'Hi'},
-        {id: 2, name: 'Diana', message: 'How is your learn?'},
-        {id: 3, name: 'Vitaliy', message: 'Yo'},
-        {id: 4, name: 'Alex', message: 'Hello'},
-        {id: 5, name: 'Tatyana', message: 'Make some noise'},
-        {id: 6, name: 'Vlad', message: 'Hello World!'},
-    ],
+        {id: 1, name: 'Karina', message: 'Hi'},
+        {id: 2, name: 'Tatyana', message: 'How is your learn?'},
+        {id: 3, name: 'Vlad', message: 'Yo'},
+        {id: 4, name: 'Katya', message: 'Hello'},
+        {id: 5, name: 'Pavel', message: 'Go'},
+        {id: 6, name: 'Alexandr', message: 'Hello World!'},
+    ] ,
     dialogs: [
-        {id: 1, name: 'Vlad'},
-        {id: 2, name: 'Diana'},
-        {id: 3, name: 'Vitaliy'},
+        {id: 1, name: 'Dima'},
+        {id: 2, name: 'Vlad'},
+        {id: 3, name: 'Karina'},
         {id: 4, name: 'Tatyana'},
-        {id: 5, name: 'Sergey'},
-        {id: 6, name: 'Alexandr'},
+        {id: 5, name: 'Alexandr'},
+        {id: 6, name: 'Ivan'},
     ],
     friends: [
-        {id: 1, name: 'Alex'},
-        {id: 2, name: 'Diana'},
-        {id: 3, name: 'Sergey'},
+        {id: 1, name: 'Dima'},
+        {id: 2, name: 'Vlad'},
+        {id: 3, name: 'Karina'},
     ],
     newMessageBody: ''
 }
@@ -53,7 +61,7 @@ const initialState = {
 export const dialogsReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_BODY:
-            return {...state, newMessageBody:action.body}
+            return {...state, newMessageBody: action.body}
         case SEND_MESSAGE:
             let body = state.newMessageBody;
             return {...state, newMessageBody: '', messages: [...state.messages, {id: 7, name: 'Vladlen', message: body}]};
