@@ -1,6 +1,5 @@
 import React from "react";
 import {
-    InitialStateType,
     addPostActionCreator,
     updateNewPostTextActionCreator,
     PostType

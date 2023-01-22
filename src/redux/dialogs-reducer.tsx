@@ -4,7 +4,7 @@ const SEND_MESSAGE = 'SEND-MESSAGE';
 export const updateNewMessageBodyCreator = (body: string) => ({type: UPDATE_NEW_MESSAGE_BODY, body: body}) as const
 export const sendMessageCreator = () => ({type: SEND_MESSAGE}) as const
 
-export type ActionsTypes =
+export type DialogsActionsTypes =
     ReturnType<typeof updateNewMessageBodyCreator>
     | ReturnType<typeof sendMessageCreator>
 
@@ -18,13 +18,6 @@ export type DialogType = {
     id: number,
     name: string
 }
-
-// export type DialogPageType = {
-//     messages: Array<MessageType>
-//     dialogs: Array<DialogType>
-//     friends: Array<DialogType>
-//     newMessageBody: string
-// }
 
 export type InitialStateType = {
     messages: Array<MessageType>
@@ -58,7 +51,7 @@ const initialState = {
     newMessageBody: ''
 }
 
-export const dialogsReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
+export const dialogsReducer = (state: InitialStateType = initialState, action: DialogsActionsTypes): InitialStateType => {
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_BODY:
             return {...state, newMessageBody: action.body}
