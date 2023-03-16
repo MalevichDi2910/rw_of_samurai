@@ -20,7 +20,6 @@ const App = () => {
                             <Route path={"/profile"} element={<ProfileContainer />}>
                                 <Route path={':userId'} element={<ProfileContainer />}/>
                             </Route>
-                            {/*<Route path={"/profile/*"} element={<ProfileContainer />}/>*/}
                             <Route path={"/users"} element={ <UsersContainer />}/>
                             <Route path={"/login"} element={ <Login />}/>
                         </Routes>

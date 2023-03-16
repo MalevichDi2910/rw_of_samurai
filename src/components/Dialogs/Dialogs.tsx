@@ -1,9 +1,9 @@
-import React, {ChangeEvent} from "react";
+import React from "react";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import s from "./Dialogs.module.css"
 import {InitialStateType} from "../../redux/dialogs-reducer";
-import { Navigate } from "react-router-dom";
+import {FieldValues, useForm} from "react-hook-form";
 
 type DialogsPropsType = {
     dialogsPage: InitialStateType,
@@ -20,13 +20,8 @@ const Dialogs = (props: DialogsPropsType) => {
     let messagesElements = state.messages.map(m => <Message key={m.id} message={m.message}/>)
     let newMessageBody = state.newMessageBody;
 
-    const onSendMessageClick = () => {
-        props.sendMessage();
-    }
-
-    const onNewMessageChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        let body = (e.currentTarget.value);
-        props.updateNewMessageBody(body);
+    const addNewMessage = (values: any) => { // ТИПИЗАЦИЯ !!!!!!!!!!!!!!!!!! (FormDataType)
+        alert(values.newMessageBody)
     }
 
     return (
@@ -36,20 +31,46 @@ const Dialogs = (props: DialogsPropsType) => {
             </div>
             <div className={s.messages}>
                 <div>{messagesElements}</div>
-                <div>
-                    <div>
-                        <textarea value={newMessageBody}
-                                  onChange={onNewMessageChange}
-                                  placeholder={'Enter your message'}>
-                        </textarea>
-                    </div>
-                    <div>
-                        <button className={s.addButton} onClick={onSendMessageClick}>Send</button>
-                    </div>
-                </div>
+                <AddMessageForm onSubmit={addNewMessage}/>
             </div>
         </div>
     )
 }
 
+type DialogFormProps = {
+    newMessageBody?: string
+    onSubmit: (values: any) => void
+}
+
+const AddMessageForm = (props: DialogFormProps) => {
+
+    const {register, handleSubmit, formState: {errors}, reset} = useForm();
+    // const onSubmit = (data: FieldValues) => {
+    //     alert(JSON.stringify(data));
+    //     reset();
+    // }
+    console.log(errors)
+    return (
+        <form onSubmit={handleSubmit(props.onSubmit)}>
+            <label>
+                Message
+                <div>
+                     <textarea
+                         {...register("message", {})}
+                         placeholder={'Enter your message'}
+                     />
+                </div>
+            </label>
+            <div>
+                <input className={s.addButton} type="submit" value={'Send'}/>
+            </div>
+        </form>
+    )
+}
+
 export default Dialogs;
+
+
+
+
+
