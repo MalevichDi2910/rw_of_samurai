@@ -1,6 +1,6 @@
 const SEND_MESSAGE = 'SEND-MESSAGE';
 
-export const sendMessageCreator = (newMessageBody: string) => ({type: SEND_MESSAGE, newMessageBody}) as const
+export const sendMessageCreator = (newMessageBody: string) => ({type: SEND_MESSAGE, newMessageBody} as const)
 
 export type DialogsActionsTypes = ReturnType<typeof sendMessageCreator>
 

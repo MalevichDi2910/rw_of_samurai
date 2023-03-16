@@ -3,12 +3,10 @@ import {Dispatch} from "redux";
 import {profileAPI, usersAPI} from "../api/api";
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 
-export const addPostActionCreator = () => ({type: 'ADD-POST'}) as const
-export const updateNewPostTextActionCreator = (text: string) => ({type: 'UPDATE-NEW-POST-TEXT', newText: text}) as const
+export const addPostActionCreator = (newPostText: string) => ({type: 'ADD-POST', newPostText}) as const
 export const setUserProfile = (profile: ProfileType) => ({type: 'SET_USER_PROFILE', profile}) as const
 export const setStatus = (status: string) => ({type: 'SET_STATUS', status}) as const
 
@@ -37,7 +35,6 @@ export const updateStatus = (status: string) => (dispatch: Dispatch) => {
 
 export type ProfileActionsTypes =
     ReturnType<typeof addPostActionCreator>
-    | ReturnType<typeof updateNewPostTextActionCreator>
     | ReturnType<typeof setUserProfile>
     | ReturnType<typeof setStatus>
 
@@ -49,9 +46,8 @@ export type PostType = {
 
 export type InitialStateType = {
     posts: Array<PostType>
-    newPostText: string
     profile: ProfileType | null,
-    status: string
+    status: string,
 }
 
 let initialState: InitialStateType = {
@@ -59,7 +55,6 @@ let initialState: InitialStateType = {
         {id: 1, message: "Hi, how are you?", like: 0},
         {id: 2, message: "It's my first post", like: 29},
     ],
-    newPostText: 'it-kamasutra.com',
     profile: null,
     status: ''
 }
@@ -69,12 +64,10 @@ const profileReducer = (state: InitialStateType = initialState, action: ProfileA
         case ADD_POST:
             const newPost: PostType = {
                 id: 5,
-                message: state.newPostText,
+                message: action.newPostText,
                 like: 0
             };
-            return {...state, newPostText: '', posts: [...state.posts, newPost]};
-        case UPDATE_NEW_POST_TEXT:
-            return {...state, newPostText: action.newText};
+            return {...state, posts: [...state.posts, newPost]};
         case SET_USER_PROFILE:
             return { ...state, profile: action.profile }
         case SET_STATUS:

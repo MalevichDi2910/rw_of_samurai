@@ -3,11 +3,11 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import s from "./Dialogs.module.css"
 import {InitialStateType} from "../../redux/dialogs-reducer";
-import {FieldValues, useForm} from "react-hook-form";
+import {useForm} from "react-hook-form";
 
 type DialogsPropsType = {
     dialogsPage: InitialStateType,
-    sendMessage: () => void,
+    sendMessage: (newMessageBody: string) => void,
     updateNewMessageBody: (body: string) => void
     isAuth: boolean
 }
@@ -21,7 +21,7 @@ const Dialogs = (props: DialogsPropsType) => {
     let newMessageBody = state.newMessageBody;
 
     const addNewMessage = (values: any) => { // ТИПИЗАЦИЯ !!!!!!!!!!!!!!!!!! (FormDataType)
-        alert(values.newMessageBody)
+        props.sendMessage(values.newMessageBody)
     }
 
     return (
@@ -45,22 +45,15 @@ type DialogFormProps = {
 const AddMessageForm = (props: DialogFormProps) => {
 
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
-    // const onSubmit = (data: FieldValues) => {
-    //     alert(JSON.stringify(data));
-    //     reset();
-    // }
-    console.log(errors)
+
     return (
         <form onSubmit={handleSubmit(props.onSubmit)}>
-            <label>
-                Message
                 <div>
                      <textarea
-                         {...register("message", {})}
+                         {...register("newMessageBody", {})}
                          placeholder={'Enter your message'}
                      />
                 </div>
-            </label>
             <div>
                 <input className={s.addButton} type="submit" value={'Send'}/>
             </div>
