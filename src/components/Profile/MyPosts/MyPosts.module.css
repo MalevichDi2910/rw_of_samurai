@@ -11,3 +11,7 @@
 .posts {
     margin-top: 10px;
 }
+
+.errorSpan {
+    color: #BB0000;
+}
