@@ -2,14 +2,8 @@ import React, {useState} from "react";
 import {FieldValues, useForm} from "react-hook-form";
 
 const Login = () => {
-    const {
-        register,
-        handleSubmit,
-        formState: {
-            errors
-        },
-        reset
-    } = useForm();
+    const {register, handleSubmit, formState: {errors}, reset} = useForm();
+
     const [data, setData] = useState("");
 
     const onSubmit = (data: FieldValues) => {
@@ -39,9 +33,17 @@ const Login = () => {
                 <input
                     {...register("password", {
                         required: "Required",
+                        pattern: {
+                            value:  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$/,
+                            message: "Password must contain mixed case letters and numbers"
+                        },
                         minLength: {
                             value: 8,
                             message: "min length is 8"
+                        },
+                        maxLength: {
+                            value: 15,
+                            message: "max length is 15"
                         }
                     })}
                     type="password"
