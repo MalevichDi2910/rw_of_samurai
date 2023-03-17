@@ -4,6 +4,7 @@ import Message from "./Message/Message";
 import s from "./Dialogs.module.css"
 import {InitialStateType} from "../../redux/dialogs-reducer";
 import {useForm} from "react-hook-form";
+import style from "../Profile/MyPosts/MyPosts.module.css";
 
 type DialogsPropsType = {
     dialogsPage: InitialStateType,
@@ -50,10 +51,13 @@ const AddMessageForm = (props: DialogFormProps) => {
         <form onSubmit={handleSubmit(props.onSubmit)}>
                 <div>
                      <textarea
-                         {...register("newMessageBody", {})}
+                         {...register("newMessageBody", {
+                             required: 'Field is required'
+                         })}
                          placeholder={'Enter your message'}
                      />
                 </div>
+            {errors.newMessageBody && <span className={style.errorSpan} role="alert">{errors.newMessageBody.message?.toString()}</span>}
             <div>
                 <input className={s.addButton} type="submit" value={'Send'}/>
             </div>
