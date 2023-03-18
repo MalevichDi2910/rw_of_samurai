@@ -3,7 +3,6 @@ import s from "./Users.module.css";
 import {UserType} from "../../redux/users-reducer";
 import userPhoto from "../../assets/images/user.png";
 import {NavLink} from "react-router-dom";
-import {UsersSearchFrom} from "./UsersSearchForm";
 
 type UsersProps = {
     currentPage: number
@@ -35,7 +34,6 @@ const Users = (props: UsersProps) => {
                                      props.onPageChanged(p)
                                  }}>{p}</span>
                 })}
-
             </div>
 
             {props.users.map((u: UserType) => <div key={u.id}>

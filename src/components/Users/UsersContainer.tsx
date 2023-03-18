@@ -29,8 +29,7 @@ class UsersContainer extends React.Component<UsersAPIComponentPropsType>{
                    followingInProgress={this.props.followingInProgress}
             />
             </>
-            }
-            }
+    }}
 
 type MapStateToPropsType = {
     users: Array<UserType>

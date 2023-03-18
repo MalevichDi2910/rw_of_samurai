@@ -12,16 +12,13 @@ type UsersSearchFormObjectType  =  {
 
 export const UsersSearchFrom = () => {
 
-    const submit = (values: UsersSearchFormObjectType, { setSubmitting } : {setSubmitting: (isSubmitting: boolean) => void}) => {
-
-    }
+    const submit = (values: UsersSearchFormObjectType, { setSubmitting } : {setSubmitting: (isSubmitting: boolean) => void}) => {}
 
     return <div>
         <Formik
             initialValues={{term: ''}}
             validate={usersSearchFormValidate}
-            onSubmit={submit}
-        >
+            onSubmit={submit}>
             {({ isSubmitting }) => (
                 <Form>
                     <Field type="email" name="term" />
