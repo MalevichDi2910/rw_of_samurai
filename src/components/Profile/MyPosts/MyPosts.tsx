@@ -1,8 +1,7 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import {useForm} from "react-hook-form";
-import style from "../MyPosts/MyPosts.module.css"
+import {AddNewPostForm} from "./AddNewPostForm";
 
 export type PostType = {
   id: number,
@@ -29,30 +28,5 @@ const MyPosts = (props: MyPostsPropsType) => {
     </div>
   );
 };
-
-type MyPostsFormProps = {
-  onSubmit: (values: any) => void
-}
-
-const AddNewPostForm = (props: MyPostsFormProps) => {
-  const {register, handleSubmit, formState: {errors}, reset} = useForm();
-
-  return (
-      <form onSubmit={handleSubmit(props.onSubmit)}>
-        <div>
-            <textarea
-                {...register("newPostText", {
-                    required: 'Field is required'
-                })}
-                placeholder={'Post message'}
-            />
-        </div>
-          {errors.newPostText && <span className={style.errorSpan} role="alert">{errors.newPostText.message?.toString()}</span>}
-        <div>
-          <input type="submit" value={'Add post'}/>
-        </div>
-      </form>
-  )
-}
 
 export default MyPosts;

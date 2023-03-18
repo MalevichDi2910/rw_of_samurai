@@ -12,7 +12,7 @@ const Post = (props: PostPropsType) => {
             <img alt='' src='https://www.1zoom.ru/big2/856/329183-alexfas01.jpg'></img>
             {props.message}
             <div>
-                <span> { props.like } like</span>
+                <span> {props.like} like</span>
             </div>
         </div>
     )
