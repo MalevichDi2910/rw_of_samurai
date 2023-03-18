@@ -19,7 +19,6 @@ export type InitialStateType = {
     messages: Array<MessageType>
     dialogs: Array<DialogType>
     friends: Array<DialogType>
-    newMessageBody?: string
 }
 
 const initialState = {

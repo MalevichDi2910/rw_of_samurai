@@ -3,8 +3,7 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import s from "./Dialogs.module.css"
 import {InitialStateType} from "../../redux/dialogs-reducer";
-import {useForm} from "react-hook-form";
-import style from "../Profile/MyPosts/MyPosts.module.css";
+import {AddMessageForm} from "./Message/AddMessageForm";
 
 type DialogsPropsType = {
     dialogsPage: InitialStateType,
@@ -19,7 +18,7 @@ const Dialogs = (props: DialogsPropsType) => {
 
     let dialogsElements = state.dialogs.map(dialog => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id}/>)
     let messagesElements = state.messages.map(m => <Message key={m.id} message={m.message}/>)
-    let newMessageBody = state.newMessageBody;
+    // let newMessageBody = state.newMessageBody;
 
     const addNewMessage = (values: any) => { // ТИПИЗАЦИЯ !!!!!!!!!!!!!!!!!! (FormDataType)
         props.sendMessage(values.newMessageBody)
@@ -35,33 +34,6 @@ const Dialogs = (props: DialogsPropsType) => {
                 <AddMessageForm onSubmit={addNewMessage}/>
             </div>
         </div>
-    )
-}
-
-type DialogFormProps = {
-    newMessageBody?: string
-    onSubmit: (values: any) => void
-}
-
-const AddMessageForm = (props: DialogFormProps) => {
-
-    const {register, handleSubmit, formState: {errors}, reset} = useForm();
-
-    return (
-        <form onSubmit={handleSubmit(props.onSubmit)}>
-                <div>
-                     <textarea
-                         {...register("newMessageBody", {
-                             required: 'Field is required'
-                         })}
-                         placeholder={'Enter your message'}
-                     />
-                </div>
-            {errors.newMessageBody && <span className={style.errorSpan} role="alert">{errors.newMessageBody.message?.toString()}</span>}
-            <div>
-                <input className={s.addButton} type="submit" value={'Send'}/>
-            </div>
-        </form>
     )
 }
 
