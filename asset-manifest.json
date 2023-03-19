@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/rw_of_samurai/static/css/main.d618c1be.css",
+    "main.js": "/rw_of_samurai/static/js/main.6c188922.js",
+    "static/js/787.28cb0dcd.chunk.js": "/rw_of_samurai/static/js/787.28cb0dcd.chunk.js",
+    "static/media/preloader.gif": "/rw_of_samurai/static/media/preloader.7f686c03a467bef7dac6.gif",
+    "static/media/user.png": "/rw_of_samurai/static/media/user.b53a8a7e96bfa5cbe71c.png",
+    "index.html": "/rw_of_samurai/index.html",
+    "main.d618c1be.css.map": "/rw_of_samurai/static/css/main.d618c1be.css.map",
+    "main.6c188922.js.map": "/rw_of_samurai/static/js/main.6c188922.js.map",
+    "787.28cb0dcd.chunk.js.map": "/rw_of_samurai/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d618c1be.css",
+    "static/js/main.6c188922.js"
+  ]
+}
