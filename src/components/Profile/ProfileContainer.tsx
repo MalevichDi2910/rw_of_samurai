@@ -9,7 +9,7 @@ import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 
 export interface WithRouterProps {
-    params: Record<string, string>;
+    params: Record<string, number>;
 }
 
 export const withRouter = <Props extends WithRouterProps>(
@@ -32,10 +32,10 @@ class ProfileContainer extends React.Component<PropsType> {
 
     componentDidMount() {
 
-        let userId = this.props.params.userId;
+        let userId: number | null = this.props.params.userId;
 
         if (!userId){
-            userId = '2';
+            userId = this.props.authorizedUserId;
         }
         this.props.getUserProfile(userId);
         this.props.getStatus(userId);
@@ -53,14 +53,16 @@ class ProfileContainer extends React.Component<PropsType> {
 }
 
 export type MapDispatchToPropsType = {
-    getUserProfile: (userId: string) => void
-    getStatus: (userId: string) => void
+    getUserProfile: (userId: number | null) => void
+    getStatus: (userId: number | null) => void
     updateStatus: (status: string) => void
 }
 
 type MapStateToPropsType = {
     profile: ProfileType
     status: string
+    authorizedUserId: null | number
+    isAuth: boolean
 }
 
 export type OwnPropsType = MapStateToPropsType & MapDispatchToPropsType;
@@ -68,7 +70,9 @@ export type PropsType = WithRouterProps & OwnPropsType;
 
 let mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
     profile: state.profilePage.profile!,
-    status: state.profilePage.status
+    status: state.profilePage.status,
+    authorizedUserId: state.auth.id,
+    isAuth: state.auth.isAuth
 })
 
 export default compose<ComponentType>(withAuthRedirect,connect(mapStateToProps, { getUserProfile, getStatus, updateStatus }),withRouter)(ProfileContainer)
