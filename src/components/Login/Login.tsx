@@ -11,7 +11,7 @@ type LoginPropsType = {
 }
 
 const Login = (props: LoginPropsType) => {
-    const {register, handleSubmit, formState: {errors}, reset} = useForm();
+    const {register, handleSubmit, formState: {errors, isSubmitSuccessful}, reset} = useForm();
 
     const onSubmit = (data: FieldValues) => {
         props.loginTC(data.email, data.password, data.rememberMe)
@@ -45,7 +45,7 @@ const Login = (props: LoginPropsType) => {
                         required: "Required",
                         pattern: {
                             value:  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$/,
-                            message: "Password must contain mixed case letters and numbers"
+                            message: "Password must contain mixed latin letters and numbers"
                         },
                         minLength: {
                             value: 8,
@@ -65,6 +65,9 @@ const Login = (props: LoginPropsType) => {
                 <input {...register("rememberMe")} type='checkbox'/> remember me
             </div>
             <button type="submit">Log in</button>
+            <div>
+                {isSubmitSuccessful ? <span role="alert">Incorrect email or password</span> : ''}
+            </div>
         </form>
     );
 }
