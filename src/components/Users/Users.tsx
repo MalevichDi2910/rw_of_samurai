@@ -26,7 +26,6 @@ const Users = (props: UsersProps) => {
 
     return (
         <div>
-
             <div>
                 {pages.map(p => {
                     return <span className={props.currentPage === p && s.selectedPage}
@@ -39,8 +38,8 @@ const Users = (props: UsersProps) => {
             {props.users.map((u: UserType) => <div key={u.id}>
                     <span>
                         <div>
-                            <NavLink to={'./../profile/' + u.id}>
-                            <img src={u.photos.small !== null ? u.photos.small : userPhoto}
+                            <NavLink to={'/profile/' + u.id}>
+                            <img src={u.photos.small != null ? u.photos.small : userPhoto}
                                  className={s.userPhoto}/>
                             </NavLink>
                         </div>
