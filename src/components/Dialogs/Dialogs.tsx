@@ -12,15 +12,19 @@ type DialogsPropsType = {
     isAuth: boolean
 }
 
+type FormDataType = {
+    newMessageBody: string
+}
+
 const Dialogs = (props: DialogsPropsType) => {
 
     let state = props.dialogsPage;
 
     let dialogsElements = state.dialogs.map(dialog => <DialogItem key={dialog.id} name={dialog.name} id={dialog.id}/>)
     let messagesElements = state.messages.map(m => <Message key={m.id} message={m.message}/>)
-    // let newMessageBody = state.newMessageBody;
 
-    const addNewMessage = (values: any) => { // ТИПИЗАЦИЯ !!!!!!!!!!!!!!!!!! (FormDataType)
+    const addNewMessage = (values: FormDataType) => {
+        console.log(values)
         props.sendMessage(values.newMessageBody)
     }
 
