@@ -34,13 +34,13 @@ const Navbar = () => {
                 <NavLink to="/users"> Users </NavLink>
             </div>
             <div className={s.item}>
-                <NavLink to="/"> News </NavLink>
+                <NavLink to="/news"> News </NavLink>
             </div>
             <div className={s.item}>
-                <NavLink to="/"> Music </NavLink>
+                <NavLink to="/music"> Music </NavLink>
             </div>
             <div className={s.item}>
-                <NavLink to="/"> Settings </NavLink>
+                <NavLink to="/settings"> Settings </NavLink>
             </div>
             <hr/>
             <div className={s.friends}>
