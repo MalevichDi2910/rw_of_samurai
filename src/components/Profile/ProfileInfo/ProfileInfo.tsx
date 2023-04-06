@@ -1,7 +1,7 @@
 import React from 'react';
 import s from "./ProfileInfo.module.css";
 import Preloader from "../../common/Preloader/Preloader";
-import ProfileStatus from './ProfileStatus'
+import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
 
 type ContactsType = {
     github: string
@@ -28,22 +28,28 @@ export type ProfileType = {
     photos: PhotosType
 }
 
-const ProfileInfo = (props: { profile: ProfileType, status: string, updateStatus: (status: string) => void }) => {
-    if (!props.profile) {
+type ProfileInfoProps = {
+    profile: ProfileType
+    status: string
+    updateStatus: (status: string) => void
+}
+
+const ProfileInfo = ({profile, updateStatus, status}: ProfileInfoProps) => {
+    if (!profile) {
         return <Preloader/>
     }
 
     return (
         <div>
             <div className={s.descriptionBlock}>
-                <img src={props.profile.photos.large}/>
-                <ProfileStatus
-                    status={props.status}
-                    updateStatus={props.updateStatus}
+                <img src={profile.photos.large}/>
+                <ProfileStatusWithHooks
+                    status={status}
+                    updateStatus={updateStatus}
                 />
             </div>
             <div>
-                {props.profile.fullName}
+                {profile.fullName}
             </div>
         </div>
     )
