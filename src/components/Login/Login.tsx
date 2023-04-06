@@ -11,14 +11,16 @@ type LoginPropsType = {
 }
 
 const Login = (props: LoginPropsType) => {
+
+    const{loginTC, isAuth} = props;
     const {register, handleSubmit, formState: {errors, isSubmitSuccessful}, reset} = useForm();
 
     const onSubmit = (data: FieldValues) => {
-        props.loginTC(data.email, data.password, data.rememberMe)
+        loginTC(data.email, data.password, data.rememberMe)
         reset();
     }
 
-    if(props.isAuth) {
+    if(isAuth) {
         return <Navigate to={'/profile'}/>
     }
 
@@ -77,7 +79,7 @@ type MapStateToPropsType = {
 }
 
 const mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
-        isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth
 })
 
 export default connect (mapStateToProps, {loginTC}) (Login);
