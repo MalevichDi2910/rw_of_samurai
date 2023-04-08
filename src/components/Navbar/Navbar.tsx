@@ -7,13 +7,13 @@ const Navbar = () => {
 
     const friends = [
       {id: 1, name: 'Dima'},
-      {id: 2, name: 'Pavel'},
+      {id: 2, name: 'Egor'},
       {id: 3, name: 'Vlad'},
     ]
 
   let friendsNav = friends.map(f => {
       return (
-          <div className={s.nameFriend}>
+          <div key={f.id} className={s.nameFriend}>
               <img
                   src='https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745'
                   alt={f.name}/>
