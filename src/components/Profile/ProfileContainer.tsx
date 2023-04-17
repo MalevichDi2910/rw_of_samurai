@@ -7,6 +7,8 @@ import {ProfileType} from "./ProfileInfo/ProfileInfo";
 import {useParams} from "react-router-dom";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
+import { createBrowserHistory } from "history";
+
 
 export interface WithRouterProps {
     params: Record<string, number>;
@@ -28,14 +30,18 @@ export const withRouter = <Props extends WithRouterProps>(
     };
 };
 
+const history = createBrowserHistory();
+
 class ProfileContainer extends React.Component<PropsType> {
 
     componentDidMount() {
 
         let userId: number | null = this.props.params.userId;
-
         if (!userId){
             userId = this.props.authorizedUserId;
+            if(!userId){
+               history.push('/login');
+            }
         }
         this.props.getUserProfile(userId);
         this.props.getStatus(userId);

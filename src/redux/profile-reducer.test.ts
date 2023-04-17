@@ -35,7 +35,7 @@ test('after deleting length of posts should be decrement', () => {
 
     let newState = profileReducer(state,action);
 
-    expect(newState.posts.length).toBe(2)
+    expect(newState.posts.length).toBe(1)
 });
 
 test(`after deleting length of posts shouldn't be decrement`, () => {
