@@ -3,7 +3,6 @@ import s from "./Users.module.css";
 import {UserType} from "../../redux/users-reducer";
 import userPhoto from "../../assets/images/user.png";
 import {NavLink} from "react-router-dom";
-import Paginator from "../common/Paginator/Paginator";
 
 type UsersProps = {
     user: UserType
@@ -37,7 +36,7 @@ const User = ({user, followingInProgress, unfollow, follow}: UsersProps) => {
                 </div>
             </span>
             <span>
-                <span>
+                <span className={s.info}>
                     <div>{user.name}</div>
                     <div>{user.status}</div>
                 </span>

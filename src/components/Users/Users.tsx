@@ -6,17 +6,19 @@ import User from "./User";
 type UsersProps = {
     currentPage: number
     pageSize: number
-    totalUsersCount: number
+    totalItemsCount: number
     users: Array<UserType>
     onPageChanged: (pageNumber: number) => void
+    portionSize: number
     followingInProgress: number[]
     follow:(userId: number) => void
     unfollow:(userId: number) => void
+
 }
 
-const Users = ({currentPage, totalUsersCount, onPageChanged, pageSize, users,  ...props}: UsersProps) => {
+const Users = ({currentPage, totalItemsCount, onPageChanged, pageSize, users, portionSize, ...props}: UsersProps) => {
 
-    let pagesCount = Math.ceil(totalUsersCount / pageSize)
+    let pagesCount = Math.ceil(totalItemsCount / pageSize)
 
     let pages = [];
     for (let i = 1; i <= pagesCount; i++) {
@@ -25,8 +27,8 @@ const Users = ({currentPage, totalUsersCount, onPageChanged, pageSize, users,  .
 
     return (
         <div>
-            <Paginator currentPage={currentPage} pageSize={pageSize} totalUsersCount={totalUsersCount}
-                       onPageChanged={onPageChanged}/>
+            <Paginator currentPage={currentPage} pageSize={pageSize} totalItemsCount={totalItemsCount}
+                       onPageChanged={onPageChanged} portionSize={portionSize}/>
             {users.map((u: UserType) => <User key={u.id}
                                               user={u}
                                               followingInProgress={props.followingInProgress}
