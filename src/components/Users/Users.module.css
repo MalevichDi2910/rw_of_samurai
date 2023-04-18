@@ -1,6 +1,16 @@
 .userPhoto {
     width: 100px;
     height: 100px;
+    margin-left: 10px;
+}
+
+button {
+    margin-left: 10px;
+}
+
+.info {
+    display: inline-block;
+    margin: 10px;
 }
 
 
