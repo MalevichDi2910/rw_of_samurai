@@ -87,6 +87,7 @@ export type initialStateType = {
     currentPage: number
     isFetching: boolean
     followingInProgress: number[]
+    portionSize: number
 }
 
 const initialState: initialStateType = {
@@ -95,7 +96,8 @@ const initialState: initialStateType = {
     totalUsersCount: 0,
     currentPage: 1,
     isFetching: false,
-    followingInProgress: []
+    followingInProgress: [],
+    portionSize: 10
 }
 
 const usersReducer = (state: initialStateType = initialState, action: UsersActionsTypes) : initialStateType => {
