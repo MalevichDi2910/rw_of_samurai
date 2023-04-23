@@ -5,3 +5,7 @@
 .fullName {
     margin-left: 10px;
 }
+
+.mainPhoto {
+    max-width: 200px;
+}
