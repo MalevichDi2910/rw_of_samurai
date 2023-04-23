@@ -2,6 +2,7 @@ import React from 'react';
 import s from "./ProfileInfo.module.css";
 import Preloader from "../../common/Preloader/Preloader";
 import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
+import userPhoto from "./../../../assets/images/user.png";
 
 type ContactsType = {
     github: string
@@ -42,7 +43,7 @@ const ProfileInfo = ({profile, updateStatus, status}: ProfileInfoProps) => {
     return (
         <div>
             <div className={s.descriptionBlock}>
-                <img src={profile.photos.large}/>
+                <img src={profile.photos.large || userPhoto} className={s.mainPhoto}/>
                 <ProfileStatusWithHooks
                     status={status}
                     updateStatus={updateStatus}
