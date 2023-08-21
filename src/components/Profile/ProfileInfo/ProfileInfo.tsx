@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ChangeEvent} from 'react';
 import s from "./ProfileInfo.module.css";
 import Preloader from "../../common/Preloader/Preloader";
 import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
@@ -15,13 +15,13 @@ type ContactsType = {
     mainLink: string
 }
 
-type PhotosType = {
+export type PhotosType = {
     small: string
     large: string
 }
 
 export type ProfileType = {
-    userId: number
+    userId: number | undefined
     lookingForAJob: boolean
     lookingForAJobDescription: string
     fullName: string
@@ -31,23 +31,30 @@ export type ProfileType = {
 
 type ProfileInfoProps = {
     profile: ProfileType
+    isOwner: boolean
     status: string
     updateStatus: (status: string) => void
+    savePhoto: (file: File) => void
 }
 
-const ProfileInfo = ({profile, updateStatus, status}: ProfileInfoProps) => {
+const ProfileInfo = ({profile, updateStatus, status, isOwner, savePhoto}: ProfileInfoProps) => {
     if (!profile) {
         return <Preloader/>
+    }
+
+    const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
+        if(e.target.files) {
+            savePhoto(e.target.files[0])
+        }
     }
 
     return (
         <div>
             <div className={s.descriptionBlock}>
                 <img src={profile.photos.large || userPhoto} className={s.mainPhoto}/>
-                <ProfileStatusWithHooks
-                    status={status}
-                    updateStatus={updateStatus}
-                />
+                {isOwner && <input type={'file'} onChange={onMainPhotoSelected}/>}
+
+                <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
             </div>
             <div className={s.fullName}>
                 {profile.fullName}

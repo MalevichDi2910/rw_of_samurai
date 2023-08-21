@@ -1,13 +1,13 @@
 import React from 'react';
 
-export const FormControl = ({input, meta, child, ...props}: any) => {
-    const hasError = meta.touched && meta.error;
+export const FormControl = ({input, meta: {touched, error}, children}: any) => {
+    const hasError = touched && error;
     return (
         <div>
             <div>
-                {props.children}
+                {children}
             </div>
-            { hasError && <span>{meta.error}</span> }
+            { hasError && <span>{ error}</span> }
         </div>
     );
 };
