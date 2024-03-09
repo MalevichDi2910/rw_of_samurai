@@ -30,7 +30,7 @@ class App extends React.Component<ownPropsType> {
             <div className="app-wrapper">
                 <HeaderContainer/>
                 <Navbar/>
-                <div className="app-wrapper-content">
+                <div className={"app-wrapper-content"}>
                     <React.Suspense fallback={<Preloader/>}>
                         <Routes>
                             <Route path={"/dialogs"} element={<DialogsContainer/>}/>
