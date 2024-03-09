@@ -1,10 +1,12 @@
 .header {
     grid-area: h;
-    background-color: mediumpurple;
+    background-color: white;
+    border-bottom: 1px solid #e7edf2;
 }
 
 .header img {
-    width: 80px;
+    width: 60px;
+    height: 60px;
 }
 
 .loginBlock {
@@ -14,5 +16,28 @@
 
 .loginBlock a {
     color: white;
+}
+
+.logo {
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    padding: 8px 20px 4px 20px;
+    background: linear-gradient(135deg, #4f5261 0%, #383a45 50%);;
+}
+
+.btn {
+    all: unset;
+    cursor: pointer;
+    width: 100px;
+    height: 20px;
+    color: #4f515b;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 5px;
+    margin: 20px 40px 0 0;
+    &:hover{
+        color: #8224e3;
+    }
 }
 
