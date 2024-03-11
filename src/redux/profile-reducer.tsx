@@ -51,6 +51,7 @@ export type PostType = {
     id: number
     message: string
     like: number
+    date: string
 }
 
 export type InitialStateType = {
@@ -61,8 +62,8 @@ export type InitialStateType = {
 
 let initialState: InitialStateType = {
     posts: [
-        {id: 1, message: "Hi, how are you?", like: 0},
-        {id: 2, message: "It's my first post", like: 29},
+        {id: 1, message: "Hi, how are you?", like: 0, date: '14.03.2024'},
+        {id: 2, message: "It's my first post", like: 29, date: '14.06.2023'},
     ],
     profile: null,
     status: ''
@@ -74,7 +75,8 @@ const profileReducer = (state: InitialStateType = initialState, action: ProfileA
             const newPost: PostType = {
                 id: 5,
                 message: action.newPostText,
-                like: 0
+                like: 0,
+                date: '14.03.2024'
             };
             return {...state, posts: [...state.posts, newPost]};
         case SET_USER_PROFILE:
@@ -84,7 +86,7 @@ const profileReducer = (state: InitialStateType = initialState, action: ProfileA
         case DELETE_POST:
             return {...state,  posts: state.posts.filter(p => p.id !== action.postId)}
         case SAVE_PHOTO_SUCCESS:
-            return {...state, profile: {...state.profile, photos: action.photos}}
+            return {...state, profile: {...state.profile!, photos: action.photos}}
         default:
             return state;
     }

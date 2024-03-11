@@ -1,5 +1,5 @@
 import React from "react";
-import ProfileInfo, {PhotosType, ProfileType} from "./ProfileInfo/ProfileInfo";
+import ProfileInfo, {ProfileType} from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 type ProfileProps = {

@@ -2,8 +2,8 @@ import profileReducer, {addPostActionCreator, deletePost, InitialStateType} from
 
 let state: InitialStateType = {
     posts: [
-        {id: 1, message: "Hi, how are you?", like: 0},
-        {id: 2, message: "It's my first post", like: 29},
+        {id: 1, message: "Hi, how are you?", like: 0, date: '14.03.2024'},
+        {id: 2, message: "It's my first post", like: 29, date: '14.06.2023'},
     ],
     profile: null,
     status: ''
