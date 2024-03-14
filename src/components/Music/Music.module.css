@@ -1,0 +1,8 @@
+.musicWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 80vh;
+}
