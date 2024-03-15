@@ -8,8 +8,32 @@
 
 .selectedPage {
     font-weight: bold;
+    background-color: #8224e3;
+    background-image: linear-gradient(90deg, #8224e3 0, #a968ec 50%, #8224e3 100%);
+    color: #fff;
+    box-shadow: 0 1px 3px 0 rgba(130, 36, 227, 0.5);
 }
 
 .paginator span {
+    cursor: pointer;
+    background-color: #f9f9f9;
+    text-align: center;
     margin-left: 10px;
+    padding: 0.3rem 0.75rem;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.buttons {
+    margin-left: 10px;
+    background: linear-gradient(135deg, #c395f1 0%, #8224e3 75%);
+    color: white;
+    width: 90px;
+    height: 26px;
+    border: 0 none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
 }
