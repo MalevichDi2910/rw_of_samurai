@@ -26,7 +26,7 @@ const Paginator = ({currentPage, totalItemsCount, onPageChanged, pageSize, porti
     return (
         <div className={s.paginator}>
             { portionNumber > 1 &&
-                <button onClick={ () => { setPortionNumber(portionNumber - 1) }}>PREV</button>
+                <button className={s.buttons} onClick={ () => { setPortionNumber(portionNumber - 1) }}>PREV</button>
             }
 
             {pages
@@ -40,7 +40,7 @@ const Paginator = ({currentPage, totalItemsCount, onPageChanged, pageSize, porti
             })}
 
             {portionCount > portionNumber &&
-                <button onClick={ () => { setPortionNumber(portionNumber + 1) }}>NEXT</button>
+                <button className={s.buttons} onClick={ () => { setPortionNumber(portionNumber + 1) }}>NEXT</button>
             }
 
         </div>
