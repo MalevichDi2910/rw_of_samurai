@@ -1,16 +1,63 @@
+.container {
+    display: flex;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    padding: 2rem;
+    margin: 1rem;
+    border-radius: 12px;
+    box-shadow: 15px 15px 20px rgba(58,46,68,.04);
+    min-height: 220px;
+}
+
 .userPhoto {
     width: 100px;
     height: 100px;
     margin-left: 10px;
+    border-radius: 50%;
 }
 
-button {
-    margin-left: 10px;
+.btnFollow{
+    margin: 5px 0 0 10px;
+    background: white;
+    border: 1px solid #8224e3;
+    color: #8224e3;
+    width: 120px;
+    height: 36px;
+    cursor: pointer;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: all 0.5s ease-out;
+    &:hover{
+        background: linear-gradient(135deg, #c395f1 0%, #8224e3 75%);
+        color: white;
+        border: none;
+    }
+}
+
+.status {
+    margin: 10px;
+    color: #626c72;
+    word-break: break-all;
+}
+
+.name {
+    margin: 5px 0;
+    color: #4f515b;
+    font-weight: bold;
+    word-break: break-all;
 }
 
 .info {
-    display: inline-block;
-    margin: 10px;
+    margin: 5px;
+    color: #626c72;
+    word-break: break-all;
 }
 
 
