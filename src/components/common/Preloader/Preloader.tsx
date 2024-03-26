@@ -3,7 +3,7 @@ import s from "./Preloader.module.css"
 
 const Preloader = () => {
     return (
-        <div>
+        <div className={s.wrapper}>
             <span className={s.loader}></span>
         </div>
     );
