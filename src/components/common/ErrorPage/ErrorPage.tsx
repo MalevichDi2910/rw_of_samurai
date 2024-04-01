@@ -317,6 +317,3 @@ export const SvgComponent = (
 )
 
 export const ErrorPage = memo(forwardRef(SvgComponent))
-// const ForwardRef = forwardRef(SvgComponent)
-// const Memo = memo(ForwardRef)
-// export default Memo
