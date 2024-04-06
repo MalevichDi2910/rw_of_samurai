@@ -45,13 +45,13 @@ const followUnfollowFlow = async (dispatch: Dispatch, userId: number, apiMethod:
 
 export const follow = (userId: number): AppThunk => {
     return async (dispatch) => {
-        followUnfollowFlow(dispatch,userId, usersAPI.follow.bind(usersAPI), followSuccess);
+        await followUnfollowFlow(dispatch,userId, usersAPI.follow.bind(usersAPI), followSuccess);
     }
 }
 
 export const unfollow = (userId: number): AppThunk => {
     return async (dispatch) => {
-        followUnfollowFlow(dispatch,userId, usersAPI.unfollow.bind(usersAPI), unfollowSuccess);
+       await followUnfollowFlow(dispatch,userId, usersAPI.unfollow.bind(usersAPI), unfollowSuccess);
     }
 }
 
@@ -91,7 +91,7 @@ export type initialStateType = {
 }
 
 const initialState: initialStateType = {
-    users : [],
+    users: [],
     pageSize: 5,
     totalUsersCount: 0,
     currentPage: 1,
