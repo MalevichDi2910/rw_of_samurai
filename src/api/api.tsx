@@ -1,5 +1,5 @@
 import axios from "axios";
-import {ProfileInfoProps} from "../components/Profile/ProfileInfo/ProfileInfo";
+import {ProfileInfoProps, ProfileType} from "../components/Profile/ProfileInfo/ProfileInfo";
 
 const instance = axios.create({
     withCredentials: true,
@@ -30,10 +30,10 @@ export const usersAPI = {
 
 export const profileAPI = {
     getProfile(userId: string) {
-        return instance.get(`profile/` + userId)
+        return instance.get(`profile/${userId}`)
     },
     getStatus(userId: string){
-        return instance.get<string>(`profile/status/` + userId)
+        return instance.get<string>(`profile/status/${userId}`)
     },
     updateStatus(status: string){
         return instance.put<ResponseType<string>>(`profile/status`,{ status: status })
@@ -48,8 +48,8 @@ export const profileAPI = {
             }
         })
     },
-    saveProfile(profile: ProfileInfoProps) {
-        return instance.put(`profile`, profile)
+    saveProfile(profile: ProfileType) {
+        return instance.put(`profile/`, profile)
     }
 }
 
