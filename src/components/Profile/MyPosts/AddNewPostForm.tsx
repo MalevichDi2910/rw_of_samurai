@@ -7,21 +7,26 @@ type MyPostsFormProps = {
 }
 
 export const AddNewPostForm = (props: MyPostsFormProps) => {
-    const {register, handleSubmit, formState: {errors}, reset} = useForm();
+    const {register, handleSubmit, formState: {errors}} = useForm();
+
 
     return (
         <form onSubmit={handleSubmit(props.onSubmit)}>
-            <div>
+            <div className={style.formWrapper}>
+            <div className={style.textarea}>
             <textarea
                 {...register("newPostText", {
                     required: 'Field is required'
                 })}
                 placeholder={'Post message'}
+                className={style.postTextarea}
             />
+                {errors.newPostText &&
+                    <span className={style.errorSpan} role="alert">{errors.newPostText.message?.toString()}</span>}
             </div>
-            {errors.newPostText && <span className={style.errorSpan} role="alert">{errors.newPostText.message?.toString()}</span>}
             <div>
-                <input type="submit" value={'Add post'}/>
+                <input className={style.addPostSubmit} type="submit" value={'Add post'}/>
+            </div>
             </div>
         </form>
     )
