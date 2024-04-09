@@ -1,8 +1,11 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
+import s from './ProfileInfo.module.css'
+
 
 type ProfileStatusProps = {
     status: string
     updateStatus: (status: string) => void
+    isOwner: boolean
 }
 
 export const ProfileStatusWithHooks = (props: ProfileStatusProps) => {
@@ -16,11 +19,11 @@ export const ProfileStatusWithHooks = (props: ProfileStatusProps) => {
 
     const activateEditMode = () => {
         setEditMode(true)
-        props.updateStatus(status)
     }
 
     const deactivateEditMode = () => {
         setEditMode(false)
+        props.updateStatus(status)
     }
 
     const onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -28,15 +31,15 @@ export const ProfileStatusWithHooks = (props: ProfileStatusProps) => {
     }
 
     return (
-        <div>
+        <div style={{marginBottom: "20px"}}>
             { !editMode &&
                 <div>
-                    <span onDoubleClick={ activateEditMode }>{props.status || '-------'}</span>
+                   <b style={{color: "#4f515b"}}>status</b>: <span onDoubleClick={ activateEditMode }>{props.status || 'Hello! Welcome to my project'}</span>
                 </div>
             }
             { editMode &&
                 <div>
-                    <input value={status} onChange={onStatusChange} onBlur={ deactivateEditMode } autoFocus={true}/>
+                    <input className={s.status} value={status} onChange={onStatusChange} onBlur={ deactivateEditMode } placeholder={'status...'} autoFocus />
                 </div>
             }
         </div>
