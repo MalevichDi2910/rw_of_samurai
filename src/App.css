@@ -9,13 +9,12 @@
   'n c';
 
     grid-template-rows: 80px 1fr;
-    grid-template-columns: 2fr 29fr;
+    grid-template-columns: 3fr 32fr;
     /*grid-gap: 10px;*/
   }
 
 .app-wrapper-content {
   grid-area: c;
-  background: #f1dcff;
 }
 
 .content img{
