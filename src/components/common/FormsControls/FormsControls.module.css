@@ -1,3 +1,54 @@
+.formControl {
+
+}
+
+.formControl.error input,
+.formControl.error textarea {
+    border: 1px solid red;
+}
+
+.formControl.error span {
+    color: red;
+}
+
 .errorSpan {
     color: #BB0000;
+}
+
+.inputText[type='text'] {
+    border: none;
+    resize: none;
+    width: 220px;
+    height: 4px;
+    border-radius: 6px;
+    font-size: 14px;
+    box-shadow: 0 0 0 1px #dce1e6;
+    transition: 0.4s;
+    letter-spacing: 1px;
+    padding: 10px;
+    color: #626c72;
+
+    &:focus {
+        outline: none;
+        border: 1px solid #8224e3;
+    }
+}
+
+.textArea {
+    border: none;
+    resize: none;
+    width: 220px;
+    height: 40px;
+    border-radius: 6px;
+    font-size: 14px;
+    box-shadow: 0 0 0 1px #dce1e6;
+    transition: 0.4s;
+    letter-spacing: 1px;
+    padding: 10px;
+    color: #626c72;
+
+    &:focus {
+        outline: none;
+        border: 1px solid #8224e3;
+    }
 }
