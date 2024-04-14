@@ -27,7 +27,7 @@ const initialState = {
         {id: 2, name: 'Tatyana', message: 'How is your learn?'},
         {id: 3, name: 'Vlad', message: 'Yo'},
         {id: 4, name: 'Katya', message: 'Hello'},
-        {id: 5, name: 'Pavel', message: 'Go'},
+        {id: 5, name: 'Marya', message: 'Go'},
         {id: 6, name: 'Alexandr', message: 'Hello World!'},
     ] ,
     dialogs: [
