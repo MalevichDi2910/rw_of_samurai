@@ -2,11 +2,15 @@
     grid-area: h;
     background-color: white;
     border-bottom: 1px solid #e7edf2;
+    position: relative;
 }
 
 .header img {
+    position: absolute;
     width: 60px;
     height: 60px;
+    top: 10px;
+    left: 40px;
 }
 
 .loginBlock {
@@ -20,10 +24,9 @@
 
 .logo {
     display: inline-block;
-    width: 70px;
-    height: 70px;
-    padding: 8px 20px 4px 20px;
-    background: linear-gradient(135deg, #4f5261 0%, #383a45 50%);;
+    width: 146px;
+    height: 80px;
+    background: linear-gradient(135deg, #4f5261 0%, #383a45 50%);
 }
 
 .btn {
