@@ -2,29 +2,26 @@ import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import {AddNewPostForm} from "./AddNewPostForm";
-
-export type PostType = {
-  id: number,
-  message: string,
-  like: number
-}
+import {useAutoAnimate} from "@formkit/auto-animate/react";
+import {ProfileType} from "./../ProfileInfo/ProfileInfo";
+import {PostType} from "./../../../redux/profile-reducer";
 
 type MyPostsPropsType = {
-  posts: Array<PostType>
+  posts: PostType[]
+  profile: ProfileType
   addPost: (newPostText: string) => void
 }
 
-const MyPosts = (props: MyPostsPropsType) => {
-  let postsElements = props.posts.map( p => <Post key={p.id} message={p.message} like={p.like} />);
-  const newPostElement = React.createRef<HTMLTextAreaElement>();
+const MyPosts = ({posts, addPost, profile}: MyPostsPropsType) => {
+  let postsElements = [...posts].reverse().map( p => <Post profile={profile} key={p.id} message={p.message} like={p.like} date={p.date}/>);
+  const [postsRef] = useAutoAnimate<HTMLDivElement>();
 
-  const onAddPost = (values: any) => props.addPost(values.newPostText);
+  const onAddPost = (values: any) => addPost(values.newPostText);
 
   return (
     <div className={s.postsBlock}>
-      <h3>My posts</h3>
       <AddNewPostForm onSubmit={onAddPost} />
-      <div className={s.posts}>{postsElements}</div>
+      <div ref={postsRef} className={s.posts}>{postsElements}</div>
     </div>
   );
 };
