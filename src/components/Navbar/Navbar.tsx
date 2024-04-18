@@ -2,6 +2,7 @@ import React from "react";
 import s from "./Navbar.module.css";
 import "./Navbar.css";
 import {NavLink} from 'react-router-dom';
+import userPhoto from './../../assets/images/user.png'
 
 const Navbar = () => {
 
@@ -15,7 +16,7 @@ const Navbar = () => {
       return (
           <div key={f.id} className={s.nameFriend}>
               <img
-                  src='https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745'
+                  src={userPhoto}
                   alt={f.name}/>
               {f.name}
           </div>
@@ -27,10 +28,10 @@ const Navbar = () => {
             <div className={s.item}>
                 <NavLink to="/profile"> Profile </NavLink>
             </div>
-            <div className={`${s.item}`}>
+            <div className={s.item}>
                 <NavLink to="/dialogs"> Messages </NavLink>
             </div>
-            <div className={`${s.item}`}>
+            <div className={s.item}>
                 <NavLink to="/users"> Users </NavLink>
             </div>
             <div className={s.item}>
@@ -42,7 +43,6 @@ const Navbar = () => {
             <div className={s.item}>
                 <NavLink to="/settings"> Settings </NavLink>
             </div>
-            <hr/>
             <div className={s.friends}>
                 <div className={s.nameSelection}>Friends</div>
                 <div className={s.infoFriends}>
