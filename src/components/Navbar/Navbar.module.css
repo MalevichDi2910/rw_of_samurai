@@ -1,12 +1,25 @@
 .nav {
     grid-area: n;
-    background-color: violet;
+    background: #f8f9fa;
+    border-right: 1px solid #e7edf2;
+    width: 146px;
 }
 
 .item a {
-    color: white;
+    color: #4f515b;
     text-decoration: none;
     margin-left: 10px;
+    font-size: 18px;
+    &:hover{
+        color: #8224e3;
+    }
+}
+
+.nameFriend {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px ;
 }
 
 .nameFriend img {
@@ -16,14 +29,19 @@
 }
 
 .friends {
-    margin: auto;
+    margin-top: 10px;
+    border-top: 1px solid #e7edf2;
 }
 
 .infoFriends {
     display: flex;
+    flex-direction: column;
     margin: 5px 5px 5px 20px;
 }
 
 .nameSelection {
     text-align: center;
+    color: #29292d;
+    font-weight: 500;
+    margin: 10px 0;
 }
