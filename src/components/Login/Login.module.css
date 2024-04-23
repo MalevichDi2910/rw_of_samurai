@@ -99,3 +99,8 @@ button[type="submit"] {
 p {
     margin: 5px;
 }
+
+.text {
+    border-top: 1px solid #e7edf2;
+    padding-top: 5px;
+}
