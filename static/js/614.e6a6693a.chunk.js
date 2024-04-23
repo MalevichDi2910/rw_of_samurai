@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkmy_app=self.webpackChunkmy_app||[]).push([[614],{7614:(t,e,s)=>{s.r(e),s.d(e,{default:()=>c});s(5043);var a=s(1092),i=s(3750),n=s.n(i),h=s(2616);const p="Settings_settingsWrapper__x-huU";var r=s(579);const c=()=>{const{windowSize:t}=(0,h.l)(),e=t<600?{width:250,height:250}:{width:500,height:500};return(0,r.jsx)("div",{className:p,children:(0,r.jsx)(n(),{animationData:a,style:e,loop:!0})})}}}]);
+//# sourceMappingURL=614.e6a6693a.chunk.js.map
