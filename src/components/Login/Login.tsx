@@ -4,10 +4,17 @@ import {connect} from "react-redux";
 import {loginTC} from "../../redux/auth-reducer";
 import {Navigate} from "react-router-dom";
 import {AppStateType} from "../../redux/redux-store";
+import s from './Login.module.css'
 
 type LoginPropsType = {
     loginTC: (email: string, password: string, rememberMe: boolean) => void
     isAuth: boolean
+}
+
+type FormDataType = {
+    email: string
+    password: string
+    rememberMe: boolean
 }
 
 const Login = (props: LoginPropsType) => {
@@ -25,9 +32,12 @@ const Login = (props: LoginPropsType) => {
     }
 
     return (
+        <div>
         <form onSubmit={handleSubmit(onSubmit)}>
-            <h1>Login</h1>
-            <div>
+            <fieldset className={s.form}>
+            <legend>Log In</legend>
+            <div className={s.item}>
+                <label>Email:</label>
                 <input
                     {...register("email", {
                         required: "Required",
@@ -36,22 +46,18 @@ const Login = (props: LoginPropsType) => {
                             message: "Entered value does not match email format"
                         }
                     })}
-                    type="email"
-                    placeholder="example@mail.com"
+                    className={s.inputField}
                 />
+                {errors.email && <span className={s.error} role="alert">{errors.email.message?.toString()}</span>}
             </div>
-            {errors.email && <span role="alert">{errors.email.message?.toString()}</span>}
-            <div>
+            <div className={s.item}>
+                <label>Password:</label>
                 <input
                     {...register("password", {
                         required: "Required",
-                        pattern: {
-                            value:  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$/,
-                            message: "Password must contain mixed latin letters and numbers"
-                        },
                         minLength: {
-                            value: 8,
-                            message: "min length is 8"
+                            value: 4,
+                            message: "min length is 4"
                         },
                         maxLength: {
                             value: 15,
@@ -59,18 +65,31 @@ const Login = (props: LoginPropsType) => {
                         }
                     })}
                     type="password"
-                    placeholder="password"
+                    className={s.inputField}
                 />
+                {errors.password && <span className={s.error} role="alert">{errors.password.message?.toString()}</span>}
             </div>
-            {errors.password && <span role="alert">{errors.password.message?.toString()}</span>}
-            <div>
-                <input {...register("rememberMe")} type='checkbox'/> remember me
-            </div>
-            <button type="submit">Log in</button>
-            <div>
-                {isSubmitSuccessful ? <span role="alert">Incorrect email or password</span> : ''}
-            </div>
+                <div className={s.rememberMe}>
+                    <input {...register("rememberMe")} type='checkbox'/> <label>Keep me signed in</label>
+                </div>
+                <div className={s.logIn}>
+                    <button type="submit">Log In</button>
+                    {isSubmitSuccessful ?
+                        <span className={s.errorLogin} role="alert">Incorrect email or password</span> : ''}
+                </div>
+            </fieldset>
         </form>
+            <div className={s.info}>
+                <p>To log in get registered <a href="https://social-network.samuraijs.com/" target={'_blank'}>here</a></p>
+                <p>or use common test account credentials:</p>
+                <p>Email: free@samuraijs.com</p>
+                <p>Password: free</p>
+                <p className={s.text}>If you currently can not sign in to Google Chrome, use a different</p>
+                <p>browser. Third-party browser cookies do not work for everyone.</p>
+                <p>Google is gradually disabling them</p>
+
+            </div>
+        </div>
     );
 }
 
