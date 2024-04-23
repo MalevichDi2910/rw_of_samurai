@@ -1,11 +1,191 @@
 .descriptionBlock {
     padding: 10px;
+    position: relative;
 }
 
 .fullName {
-    margin-left: 10px;
+    position: absolute;
+    left: 18rem;
+    right: 1rem;
+    top: 240px;
+    font-weight: 500;
+    color: #e7edf2;
+}
+
+.descriptionData {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 20px 20px 50px;
+    border: 1px solid #e7edf2;
+    box-shadow: 0 8px 6px -6px rgba(58,46,68,.05);
+    border-radius: 12px;
+    margin: 28px 20px 0 20px;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .mainPhoto {
+    position: absolute;
+    left: 3rem;
+    right: 1rem;
+    top: 120px;
     max-width: 200px;
+    border: solid 2px #FFF;
+    border-radius: 26px;
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.2);
+    background: #e7edf2;
+    &:hover {
+        transform: scale(1.1);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2), 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.inputFile {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.coverImage {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.headerCoverImage {
+    height: 280px;
+    background-image: url(https://mythemestore.com/beehive-preview/wp-content/uploads/buddypress/members/15/cover-image/5e2d03fcdb129-bp-cover-image.jpg);
+
+    ::before {
+        content: "";
+        background-image: radial-gradient(circle, transparent 0%, rgba(0, 0, 0, 0.15) 58%, rgba(0, 0, 0, 0.3) 100%);
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+}
+
+b {
+    color: #4f515b;
+}
+
+.wrapper {
+    position: relative;
+    width: 400px;
+    border-top: 1px solid #e7edf2;
+    border-right: 1px solid #e7edf2;
+    margin-bottom: 10px;
+}
+
+.edit {
+    background: linear-gradient(135deg, #c395f1 0%, #8224e3 75%);
+    color: white;
+    width: 100px;
+    height: 30px;
+    border: 0 none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.iconEdit {
+    all: unset;
+    cursor: pointer;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 20px;
+    top: 30px;
+    margin: 5px 0 0 5px;
+    border-radius: 6px;
+    border: 1px solid #e7edf2;
+    background: rgba(156, 81, 233, 0.05);
+    box-shadow: 0 8px 6px -6px rgba(58, 46, 68, .05);
+
+    &:hover {
+        transform: scale(1.1);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2), 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+}
+
+.image {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 0;
+    bottom: 0;
+}
+
+.status {
+    border: none;
+    resize: none;
+    width: 220px;
+    height: 4px;
+    border-radius: 6px;
+    font-size: 14px;
+    box-shadow: 0 0 0 1px #dce1e6;
+    transition: 0.4s;
+    letter-spacing: 1px;
+    padding: 10px;
+    color: #626c72;
+
+    &:focus {
+        outline: none;
+        border: 1px solid #8224e3;
+    }
+}
+
+/* for ProfileDataForm */
+
+.profileDataWrapper {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e7edf2;
+    box-shadow: 0 8px 6px -6px rgba(58,46,68,.05);
+    border-radius: 12px;
+    padding: 40px;
+    gap: 20px;
+}
+
+.item {
+    display: flex;
+    margin-bottom: 5px;
+    gap: 20px;
+    color: #4f515b;
+    font-weight: 600;
+}
+
+.item span {
+    width: 150px;
+}
+
+.profileBtn {
+    display: flex;
+}
+
+.saveBtn {
+    background: linear-gradient(135deg, #c395f1 0%, #8224e3 75%);
+    color: white;
+    width: 200px;
+    height: 36px;
+    border: 0 none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.error {
+    color: #BB0000;
 }
