@@ -11,12 +11,6 @@ type LoginPropsType = {
     isAuth: boolean
 }
 
-type FormDataType = {
-    email: string
-    password: string
-    rememberMe: boolean
-}
-
 const Login = (props: LoginPropsType) => {
 
     const{loginTC, isAuth} = props;
@@ -32,9 +26,9 @@ const Login = (props: LoginPropsType) => {
     }
 
     return (
-        <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <fieldset className={s.form}>
+        <div className={s.container}>
+        <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+            <fieldset className={s.fieldSet}>
             <legend>Log In</legend>
             <div className={s.item}>
                 <label>Email:</label>
@@ -84,9 +78,9 @@ const Login = (props: LoginPropsType) => {
                 <p>or use common test account credentials:</p>
                 <p>Email: free@samuraijs.com</p>
                 <p>Password: free</p>
-                <p className={s.text}>If you currently can not sign in to Google Chrome, use a different</p>
-                <p>browser. Third-party browser cookies do not work for everyone.</p>
-                <p>Google is gradually disabling them</p>
+                <p className={s.text}>If you currently can not sign in to Google Chrome, use a</p>
+                <p>different browser. Third-party browser cookies do not work for</p>
+                <p>everyone. Google is gradually disabling them</p>
 
             </div>
         </div>
