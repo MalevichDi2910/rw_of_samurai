@@ -32,12 +32,11 @@ class App extends React.Component<ownPropsType> {
 
         return (
             <div className="app-wrapper">
-                <HeaderContainer/>
-                <Navbar/>
+                {this.props.isAuth &&  <HeaderContainer/>}
+                {this.props.isAuth && <Navbar/>}
                 <div className={"app-wrapper-content"}>
                     <React.Suspense fallback={<Preloader/>}>
                         <Routes>
-
                             <Route element={<Navigate to='/profile'/>} path={'/'}/>
                             <Route path={"/dialogs/*"} element={<DialogsContainer/>}/>
                             <Route path={"/profile"} element={<ProfileContainer/>}>
@@ -63,12 +62,14 @@ type mapDispatchToProps = {
 
 type mapStateToPropsType = {
     initialized: boolean
+    isAuth: boolean
 }
 
 type ownPropsType = mapDispatchToProps & mapStateToPropsType;
 
 const mapStateToProps = (state: AppStateType) => ({
-    initialized: state.app.initialized
+    initialized: state.app.initialized,
+    isAuth: state.auth.isAuth
 })
 
 let AppContainer = compose<ComponentType>(connect(mapStateToProps, {initializeApp}),withRouter)(App);
